@@ -3,8 +3,11 @@
     "moduleResolution": "node",
     "target": "es5",
     "module": "esnext",
+    "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
+    "jsxFactory": "h",
+    "jsxFragmentFactory": "Fragment",
     "types": [
       "vite/client",
     ]

@@ -1,13 +1,13 @@
 import {Suspense} from 'react';
 import {Image, Link} from '@shopify/hydrogen';
-
+import {Product} from '@shopify/hydrogen/dist/esnext/storefront-api-types';
 import MoneyCompareAtPrice from './MoneyCompareAtPrice.client';
 import MoneyPrice from './MoneyPrice.client';
 
 /**
  * A shared component that displays a single product to allow buyers to quickly identify a particular item of interest
  */
-export default function ProductCard({product}) {
+const ProductCard: React.FC<{ product: Product }> = ({product}) => {
   const selectedVariant = product.variants.edges[0].node;
 
   if (selectedVariant == null) {
@@ -53,3 +53,5 @@ export default function ProductCard({product}) {
     </div>
   );
 }
+
+export default ProductCard;
