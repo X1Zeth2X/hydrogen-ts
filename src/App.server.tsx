@@ -9,7 +9,11 @@ import NotFound from './components/NotFound.server';
 import LoadingFallback from './components/LoadingFallback';
 import CartProvider from './components/CartProvider.client';
 
-function App({routes}) {
+interface AppProps {
+  routes: ImportGlobEagerOutput;
+}
+
+const App: React.FC<AppProps> = ({ routes }) => {
   return (
     <Suspense fallback={<LoadingFallback />}>
       <ShopifyProvider shopifyConfig={shopifyConfig}>
