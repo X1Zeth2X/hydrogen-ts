@@ -32,6 +32,7 @@ export default function Gallery() {
       <Image
         data={selectedVariant.image}
         className="w-[80vw] md:w-full h-full md:h-auto object-cover object-center flex-shrink-0 md:flex-shrink-none snap-start md:col-span-2 border border-gray-200 rounded-lg"
+        loading="eager"
       />
       {galleryMedia.map((med) => {
         let extraProps = {};
