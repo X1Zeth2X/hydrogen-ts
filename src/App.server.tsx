@@ -1,11 +1,13 @@
 import renderHydrogen from '@shopify/hydrogen/entry-server';
 import {Router, Route, FileRoutes, ShopifyProvider} from '@shopify/hydrogen';
 import {Suspense} from 'react';
+
 import shopifyConfig from '../shopify.config';
 import DefaultSeo from './components/DefaultSeo.server';
 import NotFound from './components/NotFound.server';
 import LoadingFallback from './components/LoadingFallback';
 import CartProvider from './components/CartProvider.client';
+import { ImportGlobEagerOutput } from '@shopify/hydrogen/dist/esnext/types';
 
 function App({routes}) {
   return (
@@ -23,6 +25,6 @@ function App({routes}) {
   );
 }
 
-const routes = import.meta.globEager('./routes/**/*.server.[jt](s|sx)');
+const routes: ImportGlobEagerOutput = import.meta.globEager('./routes/**/*.server.[jt](s|sx)');
 
 export default renderHydrogen(App, {shopifyConfig, routes});
