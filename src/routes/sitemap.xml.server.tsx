@@ -1,16 +1,16 @@
-import { useShopQuery, useShop} from '@shopify/hydrogen';
-import { ServerComponentRequest } from '@shopify/hydrogen/dist/esnext/framework/Hydration/ServerComponentRequest.server';
-import { ServerComponentResponse } from '@shopify/hydrogen/dist/esnext/framework/Hydration/ServerComponentResponse.server';
-import { QUERY } from '../queries/siteMaps';
-import { shopSitemap } from '../utils';
-import { ShopSitemapData } from '../utils/ShopSitemap/types';
+import {useShopQuery, useShop} from '@shopify/hydrogen';
+import {ServerComponentRequest} from '@shopify/hydrogen/dist/esnext/framework/Hydration/ServerComponentRequest.server';
+import {ServerComponentResponse} from '@shopify/hydrogen/dist/esnext/framework/Hydration/ServerComponentResponse.server';
+import {QUERY} from '../queries/siteMaps';
+import {shopSitemap} from '../utils';
+import {ShopSitemapData} from '../utils/ShopSitemap/types';
 
 const MAX_URLS = 250; // the google limit is 50K, however, SF API only allow querying for 250 resources each time
 
 interface SitemapProps {
-  request: ServerComponentRequest,
-  response: ServerComponentResponse,
-};
+  request: ServerComponentRequest;
+  response: ServerComponentResponse;
+}
 
 const Sitemap: React.FC<SitemapProps> = ({request, response}) => {
   response.doNotStream();
@@ -30,6 +30,6 @@ const Sitemap: React.FC<SitemapProps> = ({request, response}) => {
   response.headers.set('content-type', 'application/xml');
 
   return response.send(shopSitemap(data, request.url));
-}
+};
 
 export default Sitemap;

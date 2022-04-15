@@ -1,10 +1,14 @@
-import { CollectionConnection, ProductConnection, PageConnection } from "@shopify/hydrogen/dist/esnext/storefront-api-types";
+import {
+  CollectionConnection,
+  ProductConnection,
+  PageConnection,
+} from '@shopify/hydrogen/dist/esnext/storefront-api-types';
 
 export type ShopSitemapData = {
   products: ProductConnection;
   collections: CollectionConnection;
   pages: PageConnection;
-}
+};
 
 export type SitemapData = {
   url: string;
@@ -15,4 +19,4 @@ export type SitemapData = {
     title?: string;
     caption?: string;
   };
-}
+};

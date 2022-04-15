@@ -1,5 +1,4 @@
 import {useCart} from '@shopify/hydrogen/client';
-
 import CartIcon from './CartIcon';
 
 /**

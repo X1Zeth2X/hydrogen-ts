@@ -7,7 +7,7 @@ import MoneyPrice from './MoneyPrice.client';
 /**
  * A shared component that displays a single product to allow buyers to quickly identify a particular item of interest
  */
-const ProductCard: React.FC<{ product: Product }> = ({product}) => {
+const ProductCard: React.FC<{product: Product}> = ({product}) => {
   const selectedVariant = product.variants.edges[0].node;
 
   if (selectedVariant == null) {
@@ -52,6 +52,6 @@ const ProductCard: React.FC<{ product: Product }> = ({product}) => {
       </Link>
     </div>
   );
-}
+};
 
 export default ProductCard;

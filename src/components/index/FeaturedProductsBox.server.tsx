@@ -1,10 +1,14 @@
-import { Link } from '@shopify/hydrogen';
+import {Link} from '@shopify/hydrogen';
 import ProductCard from '../ProductCard';
-import { flattenConnection, useShop, useShopQuery } from "@shopify/hydrogen";
-import { Collection, Country, Product } from "@shopify/hydrogen/dist/esnext/storefront-api-types";
-import {QUERY} from "../../queries/indexContent";
+import {flattenConnection, useShop, useShopQuery} from '@shopify/hydrogen';
+import {
+  Collection,
+  Country,
+  Product,
+} from '@shopify/hydrogen/dist/esnext/storefront-api-types';
+import {QUERY} from '../../queries/indexContent';
 
-const FeaturedProductsBox: React.FC<{country: Country}> = ({ country }) => {
+const FeaturedProductsBox: React.FC<{country: Country}> = ({country}) => {
   const {languageCode} = useShop();
   const {data} = useShopQuery<Product>({
     query: QUERY,
@@ -15,13 +19,15 @@ const FeaturedProductsBox: React.FC<{country: Country}> = ({ country }) => {
     preload: true,
   });
 
-  const collections = data ? flattenConnection<Collection>(data.collections) : [];
+  const collections = data
+    ? flattenConnection<Collection>(data.collections)
+    : [];
   const featuredProductsCollection = collections[0];
   const featuredProducts = featuredProductsCollection.products
     ? flattenConnection(featuredProductsCollection.products)
     : null;
 
-    return (
+  return (
     <div className="bg-white p-12 shadow-xl rounded-xl mb-10">
       {featuredProductsCollection ? (
         <>
@@ -39,11 +45,12 @@ const FeaturedProductsBox: React.FC<{country: Country}> = ({ country }) => {
             </span>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
-            {featuredProducts && featuredProducts.map((product) => (
-              <div key={product.id}>
-                <ProductCard product={product as Product} />
-              </div>
-            ))}
+            {featuredProducts &&
+              featuredProducts.map((product) => (
+                <div key={product.id}>
+                  <ProductCard product={product as Product} />
+                </div>
+              ))}
           </div>
           <div className="md:hidden text-center">
             <Link
@@ -57,6 +64,6 @@ const FeaturedProductsBox: React.FC<{country: Country}> = ({ country }) => {
       ) : null}
     </div>
   );
-}
+};
 
 export default FeaturedProductsBox;

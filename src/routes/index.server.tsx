@@ -1,5 +1,8 @@
 import {Suspense} from 'react';
-import {Country, CountryCode} from '@shopify/hydrogen/dist/esnext/storefront-api-types';
+import {
+  Country,
+  CountryCode,
+} from '@shopify/hydrogen/dist/esnext/storefront-api-types';
 
 import Layout from '../components/Layout.server';
 import Welcome from '../components/Welcome.server';
@@ -13,7 +16,9 @@ interface IndexPageProps {
   country: Country;
 }
 
-const Index: React.FC<IndexPageProps> = ({ country = { isoCode: CountryCode.Us } as Country }) => {
+const Index: React.FC<IndexPageProps> = ({
+  country = {isoCode: CountryCode.Us} as Country,
+}) => {
   return (
     <Layout hero={<GradientBackground />}>
       <Suspense fallback={null}>
@@ -29,9 +34,11 @@ const Index: React.FC<IndexPageProps> = ({ country = { isoCode: CountryCode.Us }
         </Suspense>
       </div>
     </Layout>
-  )
-}
+  );
+};
 
-const BoxFallback: React.FC = () => (<div className="bg-white p-12 shadow-xl rounded-xl mb-10 h-40"></div>);
+const BoxFallback: React.FC = () => (
+  <div className="bg-white p-12 shadow-xl rounded-xl mb-10 h-40"></div>
+);
 
 export default Index;

@@ -1,10 +1,14 @@
 import {useCartUI} from './CartUIProvider.client';
 import CartIconWithItems from './CartIconWithItems.client';
 
+interface CartToggleProps {
+  handleClick: () => void;
+}
+
 /**
  * A client component that defines the behavior when a user toggles a cart
  */
-export default function CartToggle({handleClick}) {
+const CartToggle = ({handleClick}: CartToggleProps) => {
   const cartUI = useCartUI();
 
   if (cartUI == null) {
@@ -27,4 +31,6 @@ export default function CartToggle({handleClick}) {
       <span className="sr-only">Open cart</span>
     </button>
   );
-}
+};
+
+export default CartToggle;

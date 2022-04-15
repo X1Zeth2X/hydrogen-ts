@@ -1,5 +1,5 @@
-import { CacheDays, Seo, useShopQuery } from "@shopify/hydrogen";
-import { SEO_QUERY } from "../../queries/indexContent";
+import {CacheDays, Seo, useShopQuery} from '@shopify/hydrogen';
+import {SEO_QUERY} from '../../queries/indexContent';
 
 const SeoIndex: React.FC = () => {
   const {
@@ -21,6 +21,6 @@ const SeoIndex: React.FC = () => {
       }}
     />
   );
-}
+};
 
 export default SeoIndex;

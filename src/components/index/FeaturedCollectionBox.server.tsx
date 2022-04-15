@@ -1,9 +1,12 @@
-import { flattenConnection, useShop, useShopQuery } from "@shopify/hydrogen";
-import { Country, Product } from "@shopify/hydrogen/dist/esnext/storefront-api-types";
-import { QUERY } from "../../queries/indexContent";
+import {flattenConnection, useShop, useShopQuery} from '@shopify/hydrogen';
+import {
+  Country,
+  Product,
+} from '@shopify/hydrogen/dist/esnext/storefront-api-types';
+import {QUERY} from '../../queries/indexContent';
 import FeaturedCollection from '../FeaturedCollection';
 
-const FeaturedCollectionBox: React.FC<{ country: Country }> = ({country}) => {
+const FeaturedCollectionBox: React.FC<{country: Country}> = ({country}) => {
   const {languageCode} = useShop();
   const {data} = useShopQuery<Product>({
     query: QUERY,
@@ -19,6 +22,6 @@ const FeaturedCollectionBox: React.FC<{ country: Country }> = ({country}) => {
     collections && collections.length > 1 ? collections[1] : collections[0];
 
   return <FeaturedCollection collection={featuredCollection} />;
-}
+};
 
 export default FeaturedCollectionBox;

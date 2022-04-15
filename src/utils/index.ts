@@ -1,3 +1,3 @@
-import shopSitemap from "./ShopSitemap";
+import shopSitemap from './ShopSitemap';
 
-export { shopSitemap };
+export {shopSitemap};

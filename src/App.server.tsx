@@ -1,7 +1,7 @@
 import {Suspense} from 'react';
 import renderHydrogen from '@shopify/hydrogen/entry-server';
 import {Router, Route, FileRoutes, ShopifyProvider} from '@shopify/hydrogen';
-import { ImportGlobEagerOutput } from '@shopify/hydrogen/dist/esnext/types';
+import {ImportGlobEagerOutput} from '@shopify/hydrogen/dist/esnext/types';
 
 import shopifyConfig from '../shopify.config';
 import DefaultSeo from './components/DefaultSeo.server';
@@ -13,7 +13,7 @@ interface AppProps {
   routes: ImportGlobEagerOutput;
 }
 
-const App: React.FC<AppProps> = ({ routes }) => {
+const App: React.FC<AppProps> = ({routes}) => {
   return (
     <Suspense fallback={<LoadingFallback />}>
       <ShopifyProvider shopifyConfig={shopifyConfig}>
@@ -27,8 +27,10 @@ const App: React.FC<AppProps> = ({ routes }) => {
       </ShopifyProvider>
     </Suspense>
   );
-}
+};
 
-const routes: ImportGlobEagerOutput = import.meta.globEager('./routes/**/*.server.[jt](s|sx)');
+const routes: ImportGlobEagerOutput = import.meta.globEager(
+  './routes/**/*.server.[jt](s|sx)',
+);
 
 export default renderHydrogen(App, {shopifyConfig, routes});
